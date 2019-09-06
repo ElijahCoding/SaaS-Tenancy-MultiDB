@@ -2,13 +2,15 @@
 
 namespace App;
 
-use App\TenantConnection;
+use App\Tenant\Models\Tenant;
+use App\Tenant\Traits\IsTenant;
 use Illuminate\Database\Eloquent\Model;
 
-class Company extends Model
+class Company extends Model implements Tenant
 {
-    public function tenantConnection()
-    {
-        return $this->hasOne(TenantConnection::class, 'company_id', 'id');
-    }
+    use IsTenant;
+
+    protected $fillable = [
+        'name'
+    ];
 }
