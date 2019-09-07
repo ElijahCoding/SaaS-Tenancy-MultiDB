@@ -24,7 +24,7 @@
                                 @endforeach
                                 <div class="dropdown-divider"></div>
                             @endif
-                            <a class="dropdown-item" href="">New company</a>
+                            <a class="dropdown-item" href="{{ route('companies.create') }}">New company</a>
                         </div>
                     </li>
                 </ul>
