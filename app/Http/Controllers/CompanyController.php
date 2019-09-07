@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -11,8 +12,14 @@ class CompanyController extends Controller
         return view('companies.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $company = Company::make([
+            'name' => $request->name
+        ]);
 
+        $request->user()->companies()->save($company);
+
+        return back();
     }
 }
