@@ -20,6 +20,6 @@ class CompanyController extends Controller
 
         $request->user()->companies()->save($company);
 
-        return back();
+        return redirect()->route('tenant.switch', $company);
     }
 }
