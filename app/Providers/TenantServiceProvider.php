@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Tenant\Manager;
 
 class TenantServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class TenantServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->single();
+        $this->app->singleton(Manager::class, function () {
+            return new Manager();
+        });
     }
 
     /**

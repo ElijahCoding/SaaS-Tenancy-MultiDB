@@ -1,5 +1,6 @@
 <?php
+use App\Tenant\Manager;
 
 Route::get('/test', function () {
-    return 'test';
+    dd(app(Manager::class)->getTenant());
 });
