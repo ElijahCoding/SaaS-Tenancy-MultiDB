@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            {{ optional(request()->tenant())->name ?: config('app.name') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @if($companies->count())
                                 @foreach($companies as $company)
-                                    <a href="" class="dropdown-item">
+                                    <a href="{{ route('tenant.switch', $company) }}" class="dropdown-item">
                                         {{ $company->name }}
                                     </a>
                                 @endforeach
@@ -27,6 +27,11 @@
                             <a class="dropdown-item" href="{{ route('companies.create') }}">New company</a>
                         </div>
                     </li>
+                    @tenant
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Projects</a>
+                        </li>
+                    @endtenant
                 </ul>
             @endauth
 

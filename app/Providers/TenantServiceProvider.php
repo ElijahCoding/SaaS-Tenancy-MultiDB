@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Http\Request;
 use App\Tenant\Manager;
 
@@ -20,10 +21,13 @@ class TenantServiceProvider extends ServiceProvider
         });
 
         // route helper
-        // balde if
-
         Request::macro('tenant', function () {
             return app(Manager::class)->getTenant();
+        });
+
+        // balde if
+        Blade::if('tenant', function () {
+            return app(Manager::class)->hasTenant();
         });
     }
 
