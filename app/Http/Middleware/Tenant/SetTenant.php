@@ -4,6 +4,7 @@ namespace App\Http\Middleware\Tenant;
 
 use Closure;
 use App\Company;
+use App\Events\Tenant\TenantIdentified;
 
 class SetTenant
 {
@@ -25,6 +26,8 @@ class SetTenant
         if (!auth()->user()->companies->contains('id', $tenant->id)) {
             return redirect('/home');
         }
+
+        event(new TenantIdentified($tenant));
 
         return $next($request);
     }
