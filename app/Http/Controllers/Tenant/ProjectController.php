@@ -10,8 +10,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        dd(Project::all());
+        $projects = Project::get();
+
+        return view('tenant.projects.index', compact('projects'));
     }
-
-
 }
