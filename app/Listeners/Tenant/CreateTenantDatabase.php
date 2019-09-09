@@ -3,6 +3,7 @@
 namespace App\Listeners\Tenant;
 
 use Exception;
+use App\Events\Tenant\TenantDatabaseCreated;
 use App\Events\Tenant\TenantWasCreated;
 use App\Tenant\Database\DatabaseCreator;
 use Illuminate\Queue\InteractsWithQueue;
@@ -34,6 +35,6 @@ class CreateTenantDatabase
             throw new Exception('Database failed to be created.');
         }
 
-        // @todo event
+        event(new TenantDatabaseCreated($event->tenant));
     }
 }
