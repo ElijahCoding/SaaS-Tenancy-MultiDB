@@ -11,7 +11,7 @@
                     <div class="list-group">
                         <div class="list-group">
                             @foreach ($projects as $project)
-                                <a href="" class="list-group-item">{{ $project->name }}</a>
+                                <a href="{{ route('projects.show', $project) }}" class="list-group-item">{{ $project->name }}</a>
                             @endforeach
                         </div>
                     </div>

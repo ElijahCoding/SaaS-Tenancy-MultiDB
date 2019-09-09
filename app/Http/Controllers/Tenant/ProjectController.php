@@ -10,11 +10,16 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = cache()->remember('projects', 10, function () {
-            return Project::get();
-        });
-
+        // $projects = cache()->remember('projects', 10, function () {
+        //     return Project::get();
+        // });
+        $projects = Project::get();
         return view('tenant.projects.index', compact('projects'));
+    }
+
+    public function show(Project $project)
+    {
+        return view('tenant.projects.show', compact('project'));
     }
 
     public function store(Request $request)
