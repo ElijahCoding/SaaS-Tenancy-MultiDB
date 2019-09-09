@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            {{-- <div class="card">
+            <div class="card">
                 <div class="card-header">New project</div>
 
                 <div class="card-body">
@@ -32,7 +32,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Create</button>
                     </form>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

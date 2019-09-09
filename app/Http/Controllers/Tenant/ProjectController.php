@@ -14,4 +14,17 @@ class ProjectController extends Controller
 
         return view('tenant.projects.index', compact('projects'));
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        Project::create([
+            'name' => $request->name
+        ]);
+
+        return back();
+    }
 }
