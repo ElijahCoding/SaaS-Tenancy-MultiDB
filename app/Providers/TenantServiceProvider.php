@@ -7,6 +7,7 @@ use App\Console\Commands\Tenant\Migrate;
 use App\Tenant\Database\DatabaseManager;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use App\Console\Commands\Tenant\Seed;
 use Illuminate\Http\Request;
 use App\Tenant\Manager;
 
@@ -47,6 +48,10 @@ class TenantServiceProvider extends ServiceProvider
 
         $this->app->singleton(MigrateRollback::class, function ($app) {
             return new MigrateRollback($app->make('migrator'), $app->make(DatabaseManager::class));
+        });
+
+        $this->app->singleton(Seed::class, function ($app) {
+            return new Seed($app->make('db'), $app->make(DatabaseManager::class));
         });
     }
 }
