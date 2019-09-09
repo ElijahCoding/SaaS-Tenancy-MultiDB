@@ -21,7 +21,7 @@ class DatabaseManager
 
     protected function getConfigConnectionPath()
     {
-        return sprintf('database.connection.%s', $this->getDefaultConnectionName());
+        return sprintf('database.connections.%s', $this->getDefaultConnectionName());
     }
 
     protected function getDefaultConnectionName()
