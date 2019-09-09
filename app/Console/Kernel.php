@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\Tenant\Migrate::class,
+        \App\Console\Commands\Tenant\MigrateRollback::class,
     ];
 
     /**
